@@ -17,6 +17,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const todos = db.collection("todos");
 const blog = db.collection("blog");
+const projects = db.collection("projects")
 const auth = firebase.auth();
 
 const increment = firebase.firestore.FieldValue.increment(1);
@@ -26,5 +27,6 @@ export default {
   auth,
   todos,
   blog,
+  projects,
   increment,
 };
