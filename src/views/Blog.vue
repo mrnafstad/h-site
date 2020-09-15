@@ -1,18 +1,25 @@
 <template>
-  <v-container fluid class="text-center">
-    <v-row v-if="allPosts" align="center">
-      <v-col>
-        <v-list v-for="(post, idx) in allPosts" :key="idx">
-          <v-list-item three-line>
-            <v-list-item-content>
-              <v-list-item-title>{{ post.title }}</v-list-item-title>
-              <v-list-item-subtitle>{{
+  <v-container class="text-center">
+    <h3>Blog</h3>
+    <v-row v-if="allPosts" align="center" justify="center">
+      <v-col sm="6">
+        <v-expansion-panels class="text-left">
+          <v-expansion-panel v-for="(post, idx) in allPosts" :key="idx">
+            <v-expansion-panel-header
+              expand-icon="mdi-book-open-variant"
+              disable-icon-rotate
+            >{{ post.title }}</v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <h5>
+                {{
                 post.timeOfPost.toDate().toDateString()
-              }}</v-list-item-subtitle>
-              <v-list-item-subtitle>{{ post.post }}</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
+                }}
+              </h5>
+              <br />
+              {{ post.post }}
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
       </v-col>
     </v-row>
     <NewPost v-if="auth" />
@@ -26,21 +33,21 @@ import NewPost from "../components/NewPost.vue";
 export default {
   name: "Blog",
   components: {
-    NewPost,
+    NewPost
   },
   methods: {
     ...mapActions(["getPosts", "newLike"]),
     like(post) {
       console.log(post);
       this.newLike(post.id);
-    },
+    }
   },
   computed: {
-    ...mapGetters(["allPosts", "auth"]),
+    ...mapGetters(["allPosts", "auth"])
   },
   created() {
     this.getPosts().then(console.log("posts fetched"));
-  },
+  }
 };
 </script>
 

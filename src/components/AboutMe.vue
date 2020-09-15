@@ -1,17 +1,9 @@
 <template>
   <v-container fluid>
     <v-row>
-      <v-col
-        v-for="(obj, idx) in Om"
-        :key="idx"
-        class="text-start"
-        md="4"
-        sm="8"
-      >
+      <v-col v-for="(obj, idx) in Om" :key="idx" class="text-start" md="4" sm="8">
         <h3>{{ obj.title }}</h3>
-        <v-list v-for="(element, index) in obj.desc" :key="index">
-          {{ element }}
-        </v-list>
+        <v-list v-for="(element, index) in obj.desc" :key="index">{{ element }}</v-list>
       </v-col>
     </v-row>
   </v-container>
@@ -30,16 +22,16 @@ export default {
             "Quite early I knew that this was something I wanted to master and work with, so I reached out to a close friend in the business and asked what I should learn.",
             "He recommended learning a frontend framework, and as a fan he recommended Vuejs.",
             "Thus, last summer I started to learn Vuejs and decided to take an extra year at university taking programming classes to get a more fundamental understanding of programming.",
-            "A little info about this site: It's built with Vuejs, using vuex, vue-router and vuetify. In the backend I have Firestore. You need to sign in to use the todo manager and profile view, and this is a feature reserved for myself at the time being. But feel free to have a look around!",
-          ],
+            "A little info about this site: It's built with Vuejs, using vuex, vue-router and vuetify. In the backend I have Firestore. You need to sign in to use the todo manager and profile view, and this is a feature reserved for myself at the time being. But feel free to have a look around!"
+          ]
         },
         {
           id: 2,
           title: "Degrees",
           desc: [
             "MSc, Astronomy (Cosmology) at UiO",
-            "BSc, Physics (Astronomy) at UiO",
-          ],
+            "BSc, Physics (Astronomy) at UiO"
+          ]
         },
         {
           id: 3,
@@ -52,12 +44,12 @@ export default {
             "High Performance Computing (C) - UiO",
             "Introductory Computertechnology - UiO",
             "Vuejs + libraries",
-            "Firebase Firestore",
-          ],
-        },
-      ],
+            "Firebase Firestore"
+          ]
+        }
+      ]
     };
-  },
+  }
 };
 </script>
 

@@ -21,7 +21,7 @@
         <v-list-item>
           <v-btn color="success">Register</v-btn>
           <v-spacer />
-          <v-btn color="info">Login</v-btn>
+          <v-btn color="info" @click="authentication({email: username, password: password})">Login</v-btn>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   name: "Login",
   data() {
@@ -37,6 +39,12 @@ export default {
       password: null,
       showPassword: false
     };
+  },
+  methods: {
+    ...mapActions(["authentication"])
+  },
+  computed: {
+    ...mapGetters(["auth"])
   }
 };
 </script>

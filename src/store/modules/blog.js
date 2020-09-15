@@ -12,21 +12,24 @@ const getters = {
 const actions = {
   async getPosts({ commit }) {
     if (!state.isFetched) {
-      await db.blog.get().then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-          //console.log(doc.id, "=>", doc.data())
-          commit("newPost", {
-            id: doc.id,
-            title: doc.data().title,
-            post: doc.data().post,
-            likes: doc.data().likes,
-            timeOfPost: doc.data().timeOfPost,
+      await db.blog
+        .orderBy("timeOfPost")
+        .get()
+        .then(function(querySnapshot) {
+          querySnapshot.forEach(function(doc) {
+            //console.log(doc.id, "=>", doc.data())
+            commit("newPost", {
+              id: doc.id,
+              title: doc.data().title,
+              post: doc.data().post,
+              likes: doc.data().likes,
+              timeOfPost: doc.data().timeOfPost,
+            });
           });
+          state.isFetched = !state.isFetched;
+          //commit('setTodos', querySnapshot)
+          //console.log("Todos retrieved from database: ", state.isFetched)
         });
-        state.isFetched = !state.isFetched;
-        //commit('setTodos', querySnapshot)
-        //console.log("Todos retrieved from database: ", state.isFetched)
-      });
     }
   },
   async newLike(updpost) {

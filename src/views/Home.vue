@@ -11,13 +11,13 @@
 import AboutMe from "@/components/AboutMe.vue";
 export default {
   components: {
-    AboutMe,
+    AboutMe
   },
   data: function() {
     return {
-      greeting: "Hello world, it's me",
+      greeting: "Hello world, it's me"
     };
-  },
+  }
 };
 </script>
 
